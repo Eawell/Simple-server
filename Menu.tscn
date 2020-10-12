@@ -14,7 +14,7 @@ __meta__ = {
 margin_left = -1.94385
 margin_right = 1032.06
 margin_bottom = 609.0
-color = Color( 0.52549, 0.411765, 0.47451, 1 )
+color = Color( 0.27451, 0.282353, 0.592157, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -64,6 +64,9 @@ margin_left = 493.0
 margin_top = 145.0
 margin_right = 616.0
 margin_bottom = 169.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="LineEdit2" type="LineEdit" parent="."]
 margin_left = 490.432

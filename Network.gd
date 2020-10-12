@@ -5,6 +5,7 @@ const _IP = "127.0.0.1"
 
 var players = {}
 var data = {"nickname" : "", "pos" : Vector2()}
+var taken = []
 
 func _ready():
 	get_tree().connect('network_peer_disconnected', self, '_on_player_disconnected')
@@ -44,8 +45,8 @@ func _on_player_connected(connected_player_id):
 func _on_player_disconnected(id):
 	players.erase(id)
 
-func update_position(id, position):
-	players[id].position = position
+#func update_position(id, position):
+#	players[id].position = position
 
 #ask for info of other player
 #remote func _request_player_info(request_from_id, player_id):

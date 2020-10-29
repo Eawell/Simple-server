@@ -34,33 +34,13 @@ margin_left = 364.561
 margin_top = 220.0
 margin_right = 416.561
 margin_bottom = 246.0
-text = "Position"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label3" type="Label" parent="."]
-margin_left = 469.811
-margin_top = 220.892
-margin_right = 477.811
-margin_bottom = 235.892
-text = "X"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label4" type="Label" parent="."]
-margin_left = 574.675
-margin_top = 221.297
-margin_right = 586.675
-margin_bottom = 235.297
-text = "Y"
+text = "IP"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="LineEdit" type="LineEdit" parent="."]
-margin_left = 493.0
+margin_left = 496.0
 margin_top = 145.0
 margin_right = 616.0
 margin_bottom = 169.0
@@ -69,16 +49,10 @@ __meta__ = {
 }
 
 [node name="LineEdit2" type="LineEdit" parent="."]
-margin_left = 490.432
-margin_top = 213.054
-margin_right = 551.432
-margin_bottom = 237.054
-
-[node name="LineEdit3" type="LineEdit" parent="."]
-margin_left = 598.056
-margin_top = 213.054
-margin_right = 659.056
-margin_bottom = 237.054
+margin_left = 496.0
+margin_top = 216.0
+margin_right = 616.0
+margin_bottom = 240.0
 
 [node name="Join" type="Button" parent="."]
 margin_left = 434.22
@@ -91,5 +65,4 @@ __meta__ = {
 }
 [connection signal="text_changed" from="LineEdit" to="." method="_on_LineEdit_text_changed"]
 [connection signal="text_changed" from="LineEdit2" to="." method="_on_LineEdit2_text_changed"]
-[connection signal="text_changed" from="LineEdit3" to="." method="_on_LineEdit3_text_changed"]
 [connection signal="pressed" from="Join" to="." method="_on_Join_pressed"]

@@ -11,7 +11,7 @@
 [ext_resource path="res://Sprites/Guard-white.png" type="Texture" id=9]
 [ext_resource path="res://Sprites/Pressed-arrow.png" type="Texture" id=10]
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 7 ) ],
 "loop": true,
@@ -19,7 +19,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=4]
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 6 ) ],
 "loop": true,
@@ -27,7 +27,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=5]
+[sub_resource type="SpriteFrames" id=3]
 animations = [ {
 "frames": [ ExtResource( 5 ) ],
 "loop": true,
@@ -35,7 +35,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=6]
+[sub_resource type="SpriteFrames" id=4]
 animations = [ {
 "frames": [ ExtResource( 3 ) ],
 "loop": true,
@@ -43,7 +43,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=7]
+[sub_resource type="SpriteFrames" id=5]
 animations = [ {
 "frames": [ ExtResource( 9 ) ],
 "loop": true,
@@ -51,7 +51,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=8]
+[sub_resource type="SpriteFrames" id=6]
 animations = [ {
 "frames": [ ExtResource( 4 ) ],
 "loop": true,
@@ -59,7 +59,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=9]
+[sub_resource type="SpriteFrames" id=7]
 animations = [ {
 "frames": [ ExtResource( 8 ) ],
 "loop": true,
@@ -67,10 +67,10 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 21, 10 )
 
-[sub_resource type="RectangleShape2D" id=10]
+[sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 33, 14 )
 
 [node name="Player" type="KinematicBody2D"]
@@ -207,39 +207,39 @@ __meta__ = {
 
 [node name="blue" type="AnimatedSprite" parent="Skins"]
 scale = Vector2( 3, 3 )
-frames = SubResource( 3 )
+frames = SubResource( 1 )
 
 [node name="green" type="AnimatedSprite" parent="Skins"]
 scale = Vector2( 3, 3 )
-frames = SubResource( 4 )
+frames = SubResource( 2 )
 
 [node name="pink" type="AnimatedSprite" parent="Skins"]
 scale = Vector2( 3, 3 )
-frames = SubResource( 5 )
+frames = SubResource( 3 )
 
 [node name="red" type="AnimatedSprite" parent="Skins"]
 scale = Vector2( 3, 3 )
-frames = SubResource( 6 )
+frames = SubResource( 4 )
 
 [node name="white" type="AnimatedSprite" parent="Skins"]
 scale = Vector2( 3, 3 )
-frames = SubResource( 7 )
+frames = SubResource( 5 )
 
 [node name="yellow" type="AnimatedSprite" parent="Skins"]
 scale = Vector2( 3, 3 )
-frames = SubResource( 8 )
+frames = SubResource( 6 )
 
 [node name="dew" type="AnimatedSprite" parent="Skins"]
 scale = Vector2( 3, 3 )
-frames = SubResource( 9 )
+frames = SubResource( 7 )
 
 [node name="Normal" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 32 )
-shape = SubResource( 2 )
+shape = SubResource( 8 )
 
 [node name="Dew" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 31 )
-shape = SubResource( 10 )
+shape = SubResource( 9 )
 [connection signal="pressed" from="Selection/blue" to="." method="_on_blue_pressed"]
 [connection signal="pressed" from="Selection/green" to="." method="_on_green_pressed"]
 [connection signal="pressed" from="Selection/pink" to="." method="_on_pink_pressed"]

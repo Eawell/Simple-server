@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Arrow.png" type="Texture" id=2]
@@ -10,8 +10,15 @@
 [ext_resource path="res://Sprites/mexicodew.png" type="Texture" id=8]
 [ext_resource path="res://Sprites/Guard-white.png" type="Texture" id=9]
 [ext_resource path="res://Sprites/Pressed-arrow.png" type="Texture" id=10]
+[ext_resource path="res://droid-sans.regular.ttf" type="DynamicFontData" id=11]
+[ext_resource path="res://Sprites/Use-unpressed.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/Use-pressed.png" type="Texture" id=13]
+[ext_resource path="res://PlayerCollisions.gd" type="Script" id=14]
 
-[sub_resource type="SpriteFrames" id=1]
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 11 )
+
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 7 ) ],
 "loop": true,
@@ -19,7 +26,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="SpriteFrames" id=3]
 animations = [ {
 "frames": [ ExtResource( 6 ) ],
 "loop": true,
@@ -27,7 +34,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="SpriteFrames" id=4]
 animations = [ {
 "frames": [ ExtResource( 5 ) ],
 "loop": true,
@@ -35,7 +42,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=4]
+[sub_resource type="SpriteFrames" id=5]
 animations = [ {
 "frames": [ ExtResource( 3 ) ],
 "loop": true,
@@ -43,7 +50,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=5]
+[sub_resource type="SpriteFrames" id=6]
 animations = [ {
 "frames": [ ExtResource( 9 ) ],
 "loop": true,
@@ -51,7 +58,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=6]
+[sub_resource type="SpriteFrames" id=7]
 animations = [ {
 "frames": [ ExtResource( 4 ) ],
 "loop": true,
@@ -59,7 +66,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=7]
+[sub_resource type="SpriteFrames" id=8]
 animations = [ {
 "frames": [ ExtResource( 8 ) ],
 "loop": true,
@@ -67,11 +74,21 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=8]
+[sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 21, 10 )
 
-[sub_resource type="RectangleShape2D" id=9]
+[sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 33, 14 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 32
+font_data = ExtResource( 11 )
+
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 21, 31.5 )
+
+[sub_resource type="RectangleShape2D" id=13]
+extents = Vector2( 33, 46.5 )
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -82,6 +99,7 @@ margin_top = -48.0
 margin_right = 128.0
 margin_bottom = -34.0
 grow_horizontal = 2
+custom_fonts/font = SubResource( 1 )
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -129,7 +147,7 @@ passby_press = true
 visibility_mode = 1
 
 [node name="Selection" type="Node2D" parent="."]
-visible = false
+z_index = 1
 
 [node name="blue" type="Button" parent="Selection"]
 margin_left = -184.0
@@ -207,42 +225,87 @@ __meta__ = {
 
 [node name="blue" type="AnimatedSprite" parent="Skins"]
 scale = Vector2( 3, 3 )
-frames = SubResource( 1 )
+frames = SubResource( 2 )
 
 [node name="green" type="AnimatedSprite" parent="Skins"]
 scale = Vector2( 3, 3 )
-frames = SubResource( 2 )
+frames = SubResource( 3 )
 
 [node name="pink" type="AnimatedSprite" parent="Skins"]
 scale = Vector2( 3, 3 )
-frames = SubResource( 3 )
+frames = SubResource( 4 )
 
 [node name="red" type="AnimatedSprite" parent="Skins"]
 scale = Vector2( 3, 3 )
-frames = SubResource( 4 )
+frames = SubResource( 5 )
 
 [node name="white" type="AnimatedSprite" parent="Skins"]
 scale = Vector2( 3, 3 )
-frames = SubResource( 5 )
+frames = SubResource( 6 )
 
 [node name="yellow" type="AnimatedSprite" parent="Skins"]
 scale = Vector2( 3, 3 )
-frames = SubResource( 6 )
+frames = SubResource( 7 )
 
 [node name="dew" type="AnimatedSprite" parent="Skins"]
 scale = Vector2( 3, 3 )
-frames = SubResource( 7 )
+frames = SubResource( 8 )
 
 [node name="Normal" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 32 )
-shape = SubResource( 8 )
+shape = SubResource( 9 )
 
 [node name="Dew" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 31 )
-shape = SubResource( 9 )
+shape = SubResource( 10 )
+
+[node name="Joined" type="Label" parent="."]
+visible = false
+margin_left = -448.0
+margin_top = -256.0
+margin_right = -384.0
+margin_bottom = -192.0
+custom_fonts/font = SubResource( 11 )
+text = "5/6"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NormalArea" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource( 14 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NormalArea"]
+position = Vector2( 0, 10.5 )
+shape = SubResource( 12 )
+
+[node name="DewArea" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource( 14 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DewArea"]
+position = Vector2( 0, -1.5 )
+shape = SubResource( 13 )
+
+[node name="Use" type="TextureButton" parent="."]
+margin_left = 336.0
+margin_top = 136.0
+margin_right = 376.0
+margin_bottom = 176.0
+rect_scale = Vector2( 0.1, 0.1 )
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="Selection/blue" to="." method="_on_blue_pressed"]
 [connection signal="pressed" from="Selection/green" to="." method="_on_green_pressed"]
 [connection signal="pressed" from="Selection/pink" to="." method="_on_pink_pressed"]
 [connection signal="pressed" from="Selection/red" to="." method="_on_red_pressed"]
 [connection signal="pressed" from="Selection/yellow" to="." method="_on_yellow_pressed"]
 [connection signal="pressed" from="Selection/dew" to="." method="_on_dew_pressed"]
+[connection signal="pressed" from="Use" to="." method="_on_Use_pressed"]

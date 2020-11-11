@@ -1,7 +1,7 @@
 extends Node
 
-const PORT = 4031
-var _ip = "127.0.0.1"
+var PORT = 4444
+var _ip = "82.1.129.70"
 
 var players = {}
 var data = {"nickname" : "", "skin" : "white"}
@@ -59,6 +59,7 @@ sync func changed_skin(id, old_skin, new_skin):
 		taken.erase(old_skin)
 	taken.append(new_skin)
 	players[id]["skin"] = new_skin
+	get_node("/root/Lobby/"+ str(id)).vis_skin(players[id]["skin"])
 
 remote func check_taken(new_taken):
 	taken = new_taken

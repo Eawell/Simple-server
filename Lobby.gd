@@ -10,7 +10,6 @@ func _ready():
 	new_player.global_position = Vector2(500,300)
 	new_player.name = str(get_tree().get_network_unique_id())
 	new_player.set_network_master(get_tree().get_network_unique_id())
-	var info = Network.data
 	add_child(new_player)
 	new_player.init(Network.data["nickname"], Network.data["skin"], false)
 
@@ -20,3 +19,5 @@ func _on_player_disconnected(id):
 func _on_server_disconnected():
 	get_tree().change_scene('res://Join_Menu.tscn')
 
+func start_game():
+	Network.call_start()

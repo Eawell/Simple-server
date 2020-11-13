@@ -7,11 +7,15 @@ onready var collisions = "NormalArea"
 enum Direction { UPRIGHT, UPLEFT, DOWNRIGHT, DOWNLEFT, UP, DOWN, LEFT, RIGHT, NONE }
 
 var my_data
+var imposter
+var activity
+var person
 
 slave var slave_position = Vector2()
 slave var slave_movement = Direction.NONE
 
 func _ready():
+	imposter = false
 	my_data = Network.players[int(name)]
 	$NormalArea.monitorable = false
 	$NormalArea.monitoring = false
@@ -20,19 +24,25 @@ func _ready():
 	$Use.visible = false
 	get_node(collisions).monitorable = true
 	if is_network_master():
-		$Joined.visible = true
-		$Selection.visible = true
 		$up.visible = true
 		$down.visible = true
 		$left.visible = true
 		$right.visible = true
 		get_node(collisions).monitoring = true
+		if get_parent().name == "Lobby":
+			$Selection.visible = true
+			$Joined.visible = true
+		else:
+			$Selection.visible = false
+			$Joined.visible = false
 	else:
+		$Joined.visible = false
 		$Selection.visible = false
 		$NormalArea.collision_layer = 2
 		$NormalArea.collision_mask = 2
 		$DewArea.collision_layer = 2
 		$DewArea.collision_mask = 2
+		
 
 		
 func _process(delta):
@@ -107,13 +117,13 @@ func vis_skin(colour):
 	$Dew.disabled = true
 	if colour == "dew":
 		$Nickname.rect_position = Vector2(-128, -66)
+		collisions = "DewArea"
 		if is_network_master():
-			collisions = "DewArea"
 			$Dew.disabled = false
 	else:
 		$Nickname.rect_position = Vector2(-128, -48)
+		collisions = "NormalArea"
 		if is_network_master():
-			collisions = "NormalArea"
 			$Normal.disabled = false
 	$NormalArea.monitorable = false
 	$DewArea.monitorable = false
@@ -142,4 +152,5 @@ func _on_dew_pressed():
 	Network.change_skin(int(name), my_data["skin"], "dew")
 
 func _on_Use_pressed():
-	print("yes")
+	if activity == "StartButton":
+		get_parent().start_game()

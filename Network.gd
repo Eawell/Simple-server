@@ -28,7 +28,7 @@ func _connected_to_server():
 	get_tree().change_scene("res://Lobby.tscn")
 	rpc('_send_player_info', local_player_id, data)
 
-#everyone individually updates the players' info
+#everyone individually adds the player that joined
 remote func _send_player_info(id, info):
 	print("_send_player_info")
 	players[id] = info
@@ -63,6 +63,12 @@ sync func changed_skin(id, old_skin, new_skin):
 
 remote func check_taken(new_taken):
 	taken = new_taken
+
+func call_start():
+	rpc('start_game')
+	
+sync func start_game():
+	get_tree().change_scene("res://Map.tscn")
 
 #ask for info of other player
 #remote func _request_player_info(request_from_id, player_id):

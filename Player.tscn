@@ -273,7 +273,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NormalArea" type="Area2D" parent="."]
+[node name="NormalArea" type="Area2D" parent="." groups=[
+"Person",
+]]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource( 14 )
@@ -282,7 +284,9 @@ script = ExtResource( 14 )
 position = Vector2( 0, 10.5 )
 shape = SubResource( 12 )
 
-[node name="DewArea" type="Area2D" parent="."]
+[node name="DewArea" type="Area2D" parent="." groups=[
+"Person",
+]]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource( 14 )

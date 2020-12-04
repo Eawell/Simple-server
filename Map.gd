@@ -16,8 +16,9 @@ func _ready():
 	
 	for player in Network.players:
 		if player == local_player_id:
-			return
+			print("yeeees")
 		else:
+			print("TWOOO")
 			var other_player = load('res://Player.tscn').instance()
 			other_player.name = str(player)
 			other_player.set_network_master(player)

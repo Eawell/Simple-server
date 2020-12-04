@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Lobby.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Red-button.png" type="Texture" id=2]
@@ -10,7 +10,10 @@
 extents = Vector2( 568, 8 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 31, 21 )
+extents = Vector2( 32, 24 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 52, 36 )
 
 [node name="Lobby" type="Control"]
 anchor_right = 1.0
@@ -78,21 +81,26 @@ scale = Vector2( 0.083, 0.083 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StartButton"]
-position = Vector2( 2, 42 )
+position = Vector2( 2, 44 )
 shape = SubResource( 2 )
 
-[node name="Area2D" type="Area2D" parent="."]
-scale = Vector2( 0.1, 0.1 )
+[node name="GameRules" type="Area2D" parent="." groups=[
+"Activity",
+]]
+position = Vector2( 144, 148 )
+script = ExtResource( 3 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-
-[node name="Sprite" type="Sprite" parent="Area2D"]
-position = Vector2( 1320, 1680 )
-scale = Vector2( 0.7, 0.7 )
+[node name="Sprite" type="Sprite" parent="GameRules"]
+scale = Vector2( 0.07, 0.07 )
 texture = ExtResource( 5 )
 
-[node name="Sprite2" type="Sprite" parent="Area2D"]
-position = Vector2( 1320, 1560 )
+[node name="Sprite2" type="Sprite" parent="GameRules"]
+position = Vector2( 0, -12 )
 rotation = 0.610637
-scale = Vector2( 0.7, 0.7 )
+scale = Vector2( 0.07, 0.07 )
 texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameRules"]
+position = Vector2( -4, -16 )
+scale = Vector2( 1, 1 )
+shape = SubResource( 3 )

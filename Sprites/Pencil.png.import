@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Use-unpressed.png-e16bce7dd064d6c9af9adc1e21298e66.stex"
+path="res://.import/Pencil.png-03f6aac75e3e448bf191f06e11fec8bc.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Use-unpressed.png"
-dest_files=[ "res://.import/Use-unpressed.png-e16bce7dd064d6c9af9adc1e21298e66.stex" ]
+source_file="res://Sprites/Pencil.png"
+dest_files=[ "res://.import/Pencil.png-03f6aac75e3e448bf191f06e11fec8bc.stex" ]
 
 [params]
 

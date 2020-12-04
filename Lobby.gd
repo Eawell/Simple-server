@@ -19,5 +19,3 @@ func _on_player_disconnected(id):
 func _on_server_disconnected():
 	get_tree().change_scene('res://Join_Menu.tscn')
 
-func start_game():
-	Network.call_start()

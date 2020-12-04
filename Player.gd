@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-var SPEED = 500.0
+var speed = 500.0
 var skins = ["blue", "green", "pink", "red", "yellow", "dew"]
 onready var collisions = "NormalArea"
 
@@ -88,21 +88,21 @@ func _move(direction):
 		Direction.NONE:
 			return
 		Direction.UPRIGHT:
-			move_and_slide(Vector2(1, -1).normalized()*SPEED)
+			move_and_slide(Vector2(1, -1).normalized()*speed)
 		Direction.UPLEFT:
-			move_and_slide(Vector2(-1, -1).normalized()*SPEED)
+			move_and_slide(Vector2(-1, -1).normalized()*speed)
 		Direction.DOWNRIGHT:
-			move_and_slide(Vector2(1, 1).normalized()*SPEED)
+			move_and_slide(Vector2(1, 1).normalized()*speed)
 		Direction.DOWNLEFT:
-			move_and_slide(Vector2(-1, 1).normalized()*SPEED)
+			move_and_slide(Vector2(-1, 1).normalized()*speed)
 		Direction.UP:
-			move_and_slide(Vector2(0, -SPEED))
+			move_and_slide(Vector2(0, -speed))
 		Direction.DOWN:
-			move_and_slide(Vector2(0, SPEED))
+			move_and_slide(Vector2(0, speed))
 		Direction.LEFT:
-			move_and_slide(Vector2(-SPEED, 0))
+			move_and_slide(Vector2(-speed, 0))
 		Direction.RIGHT:
-			move_and_slide(Vector2(SPEED, 0))
+			move_and_slide(Vector2(speed, 0))
 
 func vis_skin(colour):
 	$Skins/blue.visible = false
@@ -153,4 +153,6 @@ func _on_dew_pressed():
 
 func _on_Use_pressed():
 	if activity == "StartButton":
-		get_parent().start_game()
+		Network.call_start()
+	elif activity == "Rules":
+		pass

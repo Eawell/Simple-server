@@ -306,6 +306,85 @@ texture_pressed = ExtResource( 13 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Control" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Node2D" type="Node2D" parent="Control"]
+z_index = 1
+
+[node name="ColorRect" type="ColorRect" parent="Control/Node2D"]
+margin_left = -448.0
+margin_top = -256.0
+margin_right = 448.0
+margin_bottom = 256.0
+color = Color( 0, 0, 0, 0.545098 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="Control/Node2D"]
+margin_left = -192.0
+margin_top = -224.0
+margin_right = 192.0
+margin_bottom = 232.0
+columns = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="Control/Node2D/GridContainer"]
+margin_right = 12.0
+margin_bottom = 20.0
+
+[node name="Map" type="Label" parent="Control/Node2D/GridContainer"]
+margin_left = 16.0
+margin_top = 3.0
+margin_right = 16.0
+margin_bottom = 17.0
+
+[node name="Button2" type="Button" parent="Control/Node2D/GridContainer"]
+margin_left = 20.0
+margin_right = 32.0
+margin_bottom = 20.0
+
+[node name="Button3" type="Button" parent="Control/Node2D/GridContainer"]
+margin_top = 24.0
+margin_right = 12.0
+margin_bottom = 44.0
+
+[node name="Speed" type="Label" parent="Control/Node2D/GridContainer"]
+margin_left = 16.0
+margin_top = 27.0
+margin_right = 16.0
+margin_bottom = 41.0
+
+[node name="Button4" type="Button" parent="Control/Node2D/GridContainer"]
+margin_left = 20.0
+margin_top = 24.0
+margin_right = 32.0
+margin_bottom = 44.0
+
+[node name="Button5" type="Button" parent="Control/Node2D/GridContainer"]
+margin_top = 48.0
+margin_right = 12.0
+margin_bottom = 68.0
+
+[node name="Label3" type="Label" parent="Control/Node2D/GridContainer"]
+margin_left = 16.0
+margin_top = 51.0
+margin_right = 16.0
+margin_bottom = 65.0
+
+[node name="Button6" type="Button" parent="Control/Node2D/GridContainer"]
+margin_left = 20.0
+margin_top = 48.0
+margin_right = 32.0
+margin_bottom = 68.0
 [connection signal="pressed" from="Selection/blue" to="." method="_on_blue_pressed"]
 [connection signal="pressed" from="Selection/green" to="." method="_on_green_pressed"]
 [connection signal="pressed" from="Selection/pink" to="." method="_on_pink_pressed"]

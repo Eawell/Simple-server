@@ -102,5 +102,4 @@ texture = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameRules"]
 position = Vector2( -4, -16 )
-scale = Vector2( 1, 1 )
 shape = SubResource( 3 )

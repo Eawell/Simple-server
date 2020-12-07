@@ -154,5 +154,5 @@ func _on_dew_pressed():
 func _on_Use_pressed():
 	if activity == "StartButton":
 		Network.call_start()
-	elif activity == "Rules":
+	elif activity == "GameRules":
 		pass

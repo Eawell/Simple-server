@@ -6,6 +6,7 @@ var _ip = "82.1.129.70"
 var players = {}
 var data = {"nickname" : "", "skin" : "white"}
 var taken = []
+var killer = ""
 
 func _ready():
 	get_tree().connect('network_peer_disconnected', self, '_on_player_disconnected')
@@ -65,9 +66,13 @@ remote func check_taken(new_taken):
 	taken = new_taken
 
 func call_start():
-	rpc('start_game')
-	
-sync func start_game():
+	var size = Network.players.size()
+	randomize()
+	var new_killer = str(Network.players.keys()[randi()%size])
+	rpc('start_game', new_killer)
+
+sync func start_game(new_killer):
+	killer = new_killer
 	get_tree().change_scene("res://Map.tscn")
 
 #ask for info of other player

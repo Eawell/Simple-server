@@ -7,7 +7,7 @@ onready var collisions = "NormalArea"
 enum Direction { UPRIGHT, UPLEFT, DOWNRIGHT, DOWNLEFT, UP, DOWN, LEFT, RIGHT, NONE }
 
 var my_data
-var imposter
+var killer
 var activity
 var person
 
@@ -15,7 +15,15 @@ slave var slave_position = Vector2()
 slave var slave_movement = Direction.NONE
 
 func _ready():
-	imposter = false
+	killer = false
+	$KillerTag.visible = false
+	$PartyGoerTag.visible = false
+	if get_parent().name != "Lobby":
+		if Network.killer == name:
+			killer = true
+			$KillerTag.visible = true
+		else:
+			$PartyGoerTag.visible = true
 	my_data = Network.players[int(name)]
 	$NormalArea.monitorable = false
 	$NormalArea.monitoring = false

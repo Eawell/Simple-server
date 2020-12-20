@@ -18,7 +18,7 @@ func _ready():
 	killer = false
 	$KillerTag.visible = false
 	$PartyGoerTag.visible = false
-	if get_parent().name != "Lobby":
+	if get_parent().name != "Lobby" && is_network_master():
 		if Network.killer == name:
 			killer = true
 			$KillerTag.visible = true
@@ -29,9 +29,10 @@ func _ready():
 	$NormalArea.monitoring = false
 	$DewArea.monitorable = false
 	$DewArea.monitoring = false
-	$Use.visible = false
+	$Buttons/Use.visible = false
 	get_node(collisions).monitorable = true
 	if is_network_master():
+		print("goooood")
 		$up.visible = true
 		$down.visible = true
 		$left.visible = true
@@ -164,3 +165,6 @@ func _on_Use_pressed():
 		Network.call_start()
 	elif activity == "GameRules":
 		pass
+
+func _on_Kill_pressed():
+	Network.kill_person(person)

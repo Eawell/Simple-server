@@ -24,6 +24,7 @@ func _ready():
 			add_child(other_player)
 			other_player.init(Network.players[player].nickname, Network.players[player].skin, true)
 
+	
 func _on_player_disconnected(id):
 	get_node(str(id)).queue_free()
 

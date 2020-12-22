@@ -10,11 +10,13 @@ var my_data
 var killer
 var activity
 var person
+var place
 
 slave var slave_position = Vector2()
 slave var slave_movement = Direction.NONE
 
 func _ready():
+	place = get_parent().name
 	killer = false
 	$KillerTag.visible = false
 	$PartyGoerTag.visible = false
@@ -25,14 +27,18 @@ func _ready():
 		else:
 			$PartyGoerTag.visible = true
 	my_data = Network.players[int(name)]
+	$Skins.modulate = Color(1,1,1,1)
+	$Normal.disabled = false
+	$Dew.disabled = false
 	$NormalArea.monitorable = false
 	$NormalArea.monitoring = false
 	$DewArea.monitorable = false
 	$DewArea.monitoring = false
 	$Buttons/Use.visible = false
+	$Buttons/Kill.visible = false
 	get_node(collisions).monitorable = true
 	if is_network_master():
-		print("goooood")
+		z_index = 1
 		$up.visible = true
 		$down.visible = true
 		$left.visible = true
@@ -168,3 +174,17 @@ func _on_Use_pressed():
 
 func _on_Kill_pressed():
 	Network.kill_person(person)
+
+func die():
+	$Normal.disabled = true
+	$Dew.disabled = true
+	if is_network_master():
+		#spawnbody
+		$Skins.modulate = Color(1,1,1,0.6)
+	else:
+		#spawnbody
+		$NormalArea.monitorable = false
+		$NormalArea.monitoring = false
+		$DewArea.monitorable = false
+		$DewArea.monitoring = false
+		visible = false
